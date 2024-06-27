@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class IngredientDTO {
     int id;
+    int recipeId;
     String name;
     double quantity;
     QuantityUnit quantityUnit;

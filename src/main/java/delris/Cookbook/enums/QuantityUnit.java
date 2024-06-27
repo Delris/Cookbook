@@ -13,7 +13,8 @@ public enum QuantityUnit {
     LITERS("l"),
     CUPS("cups"),
     TABLESPOONS("tbsp"),
-    TEASPOONS("tsp");
+    TEASPOONS("tsp"),
+    PIECE("pcs");
 
     private final String unitOfQuantity;
 
