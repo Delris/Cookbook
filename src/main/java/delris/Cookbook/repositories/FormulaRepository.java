@@ -1,22 +1,9 @@
 package delris.Cookbook.repositories;
 
-import delris.Cookbook.dto.FormulaDTO;
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Repository;
+import delris.Cookbook.entities.Formula;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+public interface FormulaRepository extends JpaRepository<Formula, Long> {
 
-@Repository
-public class FormulaRepository {
-    private FormulaDTO formulaDTO = new FormulaDTO();
-
-    public FormulaDTO findFormula(){
-        return formulaDTO;
-    }
-
-    @PostConstruct
-    private void init(){
-       formulaDTO.setRecipeSteps(List.of("Cube the bacon", "Put bacon in cold pan and turn on medium heat", "When bacon is sizzling crack eggs and pour them in the pan", "Stir constantly until consistency matches your taste", "DONE"));
-
-    }
 }

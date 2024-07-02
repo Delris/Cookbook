@@ -1,5 +1,7 @@
 package delris.Cookbook.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import delris.Cookbook.entities.Recipe;
 import delris.Cookbook.enums.QuantityUnit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IngredientDTO {
-    int id;
-    int recipeId;
-    String name;
-    double quantity;
-    QuantityUnit quantityUnit;
+    @JsonProperty("id")
+    private long ingretientId;
+    @JsonProperty("recipe")
+    private Recipe recipe;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("quantity")
+    private double quantity;
+    @JsonProperty("unit")
+    private QuantityUnit quantityUnit;
 }

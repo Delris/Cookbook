@@ -13,11 +13,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FormulaDTO {
+public class UserGetDTO {
     @JsonProperty("id")
-    private long formulaId;
-    @JsonProperty("recipe")
-    private Recipe recipe;
-    @JsonProperty("recipeSteps")
-    private List<String> recipeSteps;
+    private long userId;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("surname")
+    private String surname;
+    @JsonProperty("nickname")
+    private String nickname;
+    @JsonProperty("recipeList")
+    private List<Recipe> recipeList;
 }

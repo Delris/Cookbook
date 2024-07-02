@@ -1,28 +1,8 @@
 package delris.Cookbook.repositories;
 
-import delris.Cookbook.dto.IngredientDTO;
-import delris.Cookbook.enums.QuantityUnit;
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Repository;
+import delris.Cookbook.entities.Ingredient;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Repository
-public class IngredientRepository {
-    List<IngredientDTO> ingredientDTOList = new ArrayList<>();
-
-    public List<IngredientDTO> findAll(){
-        return ingredientDTOList;
-    }
-
-    public List<IngredientDTO> findIngredientsForRecipe(){
-        return ingredientDTOList;
-    }
-
-    @PostConstruct
-    private void init(){
-        ingredientDTOList.add(new IngredientDTO(1, 1, "bacon", 500, QuantityUnit.GRAMS));
-        ingredientDTOList.add(new IngredientDTO(2, 1, "eggs", 2, QuantityUnit.PIECE));
-    }
+public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 }
