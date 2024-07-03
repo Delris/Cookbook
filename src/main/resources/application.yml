@@ -28,7 +28,7 @@ spring:
 
 Cookbook:
   app:
-    jwtSecret: ======================BezKoder=Spring===========================
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMs: 86400000
 
 server:
