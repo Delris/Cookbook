@@ -1,8 +1,11 @@
 package delris.Cookbook.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +22,26 @@ public class User {
     private Long userId;
     private String name;
     private String surname;
-    private String nickname;
+    @NotBlank
+    private String username;
+    @NotBlank
+    @Column(columnDefinition = "varchar")
+    private String password;
+    private String email;
     @OneToMany(mappedBy = "user")
     private List<Recipe> recipes;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+
+    )
+    private Set<Role> roles = new HashSet<>();
+
+
+    public User(String username, String email, String password){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
