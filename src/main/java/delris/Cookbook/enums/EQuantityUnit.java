@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.util.stream.Stream;
 
 @Getter
-public enum QuantityUnit {
+public enum EQuantityUnit {
     GRAMS("g"),
     KILOGRAMS("kg"),
     MILLILITERS("ml"),
@@ -18,12 +18,12 @@ public enum QuantityUnit {
 
     private final String unitOfQuantity;
 
-    QuantityUnit(String unitOfQuantity){
+    EQuantityUnit(String unitOfQuantity){
         this.unitOfQuantity = unitOfQuantity;
     }
 
-    public static Stream<QuantityUnit> stream() {
-        return Stream.of(QuantityUnit.values());
+    public static Stream<EQuantityUnit> stream() {
+        return Stream.of(EQuantityUnit.values());
     }
 
 }

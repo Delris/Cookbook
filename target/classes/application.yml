@@ -1,21 +1,36 @@
 debug: false
+
 spring:
   application:
     name: Cookbook
+
+  security:
+    user:
+      name: testUser
+      password: testApi
+
   jpa:
     properties:
       hibernate:
         jdbc:
           lob:
             non_contextual_creation: true
+
     hibernate:
       ddl-auto: create-drop
       show-sql: true
+
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/cookbook
     username: ${POSTGRESQL_USER}
     password: ${POSTGRESQL_PWD}
 
+Cookbook:
+  app:
+    jwtSecret: ======================BezKoder=Spring===========================
+    jwtExpirationMs: 86400000
+
 server:
   port: 8080
+

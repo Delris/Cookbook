@@ -2,7 +2,7 @@ package delris.Cookbook.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import delris.Cookbook.entities.Recipe;
-import delris.Cookbook.enums.QuantityUnit;
+import delris.Cookbook.enums.EQuantityUnit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +22,5 @@ public class IngredientDTO {
     @JsonProperty("quantity")
     private double quantity;
     @JsonProperty("unit")
-    private QuantityUnit quantityUnit;
+    private EQuantityUnit quantityUnit;
 }

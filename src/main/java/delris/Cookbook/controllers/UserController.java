@@ -5,6 +5,7 @@ import delris.Cookbook.dto.UserPostDTO;
 import delris.Cookbook.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -20,10 +21,12 @@ public class UserController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/user/{id}")
     public ResponseEntity<UserGetDTO> getUser(@PathVariable long id){
         return ResponseEntity.ok(userService.findById(id));
     }
+
 
     @PostMapping("/user")
     public ResponseEntity<UserPostDTO> createUser(@RequestBody UserPostDTO userPostDTO){

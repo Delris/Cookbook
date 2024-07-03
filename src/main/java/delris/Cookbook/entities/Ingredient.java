@@ -1,6 +1,6 @@
 package delris.Cookbook.entities;
 
-import delris.Cookbook.enums.QuantityUnit;
+import delris.Cookbook.enums.EQuantityUnit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +23,5 @@ public class Ingredient {
     private List<Recipe> recipes;
     private String name;
     private double quantity;
-    private QuantityUnit quantityUnit;
+    private EQuantityUnit quantityUnit;
 }
