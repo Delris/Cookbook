@@ -4,12 +4,17 @@ spring:
   application:
     name: Cookbook
 
+  sql:
+    init:
+      mode: always
+
   security:
     user:
       name: testUser
       password: testApi
 
   jpa:
+    defer-datasource-initialization: true
     properties:
       hibernate:
         jdbc:
@@ -28,7 +33,7 @@ spring:
 
 Cookbook:
   app:
-    jwtSecret: ======================BezKoder=Spring===========================
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMs: 86400000
 
 server:
