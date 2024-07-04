@@ -8,11 +8,6 @@ spring:
     init:
       mode: always
 
-  security:
-    user:
-      name: testUser
-      password: testApi
-
   jpa:
     defer-datasource-initialization: true
     properties:

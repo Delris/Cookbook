@@ -38,6 +38,7 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
+    //constructor for creating new account
     public User(String username, String email, String password){
         this.username = username;
         this.email = email;
