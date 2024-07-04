@@ -17,6 +17,7 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long recipeId;
+    private String name;
     @ManyToMany
     @JoinTable(
             name = "recipe_ingredients",

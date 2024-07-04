@@ -23,6 +23,7 @@ public class RecipeService {
     public List<RecipeDTO> findAll(){
        return recipeMapper.toRecipeDTOs(recipeRepository.findAll());
     }
+
     public RecipeDTO findById(Long id){
         if(recipeRepository.findById(id).isPresent()) {
             return recipeMapper.toRecipeDTO(recipeRepository.findById(id).get());
@@ -30,6 +31,15 @@ public class RecipeService {
             return new RecipeDTO();
         }
     }
+
+    public RecipeDTO findByName(String name){
+        if(recipeRepository.findByName(name).isPresent()){
+            return recipeMapper.toRecipeDTO(recipeRepository.findByName(name).get());
+        }else{
+            return new RecipeDTO();
+        }
+    }
+
     public List<RecipeDTO> findAllByUser(){
         return List.of();
     }
