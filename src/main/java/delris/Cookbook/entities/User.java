@@ -25,7 +25,6 @@ public class User {
     @NotBlank
     private String username;
     @NotBlank
-    @Column(columnDefinition = "varchar")
     private String password;
     private String email;
     @OneToMany(mappedBy = "user")
