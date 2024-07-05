@@ -79,10 +79,8 @@ public class AuthController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        String encodedPassword = encoder.encode(signUpRequest.getPassword());
-
         User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
-                encodedPassword);
+                encoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -116,7 +114,6 @@ public class AuthController {
 
         user.setRoles(roles);
         userRepository.save(user);
-        System.out.println(encodedPassword);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }

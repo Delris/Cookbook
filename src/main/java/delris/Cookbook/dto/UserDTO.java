@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserGetDTO {
+public class UserDTO {
     @JsonProperty("id")
     private long userId;
     @JsonProperty("name")
@@ -23,5 +23,5 @@ public class UserGetDTO {
     @JsonProperty("nickname")
     private String nickname;
     @JsonProperty("recipeList")
-    private List<Recipe> recipeList;
+    private List<RecipeDTO> recipeList;
 }

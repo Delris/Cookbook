@@ -2,16 +2,11 @@ package delris.Cookbook.mappers;
 
 import delris.Cookbook.dto.IngredientDTO;
 import delris.Cookbook.entities.Ingredient;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
-@Generated(
-    value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-04T13:11:27+0200",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.3 (Oracle Corporation)"
-)
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class IngredientMapperImpl implements IngredientMapper {
 
@@ -73,3 +68,4 @@ public class IngredientMapperImpl implements IngredientMapper {
         return list;
     }
 }
+

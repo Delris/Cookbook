@@ -6,16 +6,12 @@ import delris.Cookbook.dto.RecipeDTO;
 import delris.Cookbook.entities.Formula;
 import delris.Cookbook.entities.Ingredient;
 import delris.Cookbook.entities.Recipe;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.processing.Generated;
+import delris.Cookbook.entities.RecipeStep;
 import org.springframework.stereotype.Component;
 
-@Generated(
-    value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-04T13:11:28+0200",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.3 (Oracle Corporation)"
-)
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class RecipeMapperImpl implements RecipeMapper {
 
@@ -112,9 +108,9 @@ public class RecipeMapperImpl implements RecipeMapper {
         Formula formula = new Formula();
 
         formula.setFormulaId( formulaDTO.getFormulaId() );
-        List<String> list = formulaDTO.getRecipeSteps();
+        List<RecipeStep> list = formulaDTO.getRecipeSteps();
         if ( list != null ) {
-            formula.setRecipeSteps( new ArrayList<String>( list ) );
+            formula.setRecipeSteps( new ArrayList<RecipeStep>( list ) );
         }
         formula.setRecipe( formulaDTO.getRecipe() );
 
@@ -157,9 +153,9 @@ public class RecipeMapperImpl implements RecipeMapper {
 
         formulaDTO.setFormulaId( formula.getFormulaId() );
         formulaDTO.setRecipe( formula.getRecipe() );
-        List<String> list = formula.getRecipeSteps();
+        List<RecipeStep> list = formula.getRecipeSteps();
         if ( list != null ) {
-            formulaDTO.setRecipeSteps( new ArrayList<String>( list ) );
+            formulaDTO.setRecipeSteps( new ArrayList<RecipeStep>( list ) );
         }
 
         return formulaDTO;

@@ -39,6 +39,13 @@ public class RecipeService {
             return new RecipeDTO();
         }
     }
+    public List<RecipeDTO> find50MostRecentEntries(){
+        if(recipeRepository.find50MostRecentEntries().isPresent()){
+            return recipeMapper.toRecipeDTOs(recipeRepository.find50MostRecentEntries().get());
+        }else{
+            return List.of();
+        }
+    }
 
     public List<RecipeDTO> findAllByUser(){
         return List.of();
