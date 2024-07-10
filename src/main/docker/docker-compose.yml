@@ -1,6 +1,4 @@
 services:
-  web:
-    env_file: variables.env
   app:
     image: "cookbook-docker"
     container_name: CookbookApplication
