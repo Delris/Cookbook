@@ -1,0 +1,36 @@
+services:
+  web:
+    env_file: variables.env
+  app:
+    image: "cookbook-docker"
+    container_name: CookbookApplication
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/cookbook
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - JWT_SECRET=IAMTHESECRETESTSECRETasdasdasdasdasdasdsafsdfgefgeasdasdgtwfeasdfsgffasdfsdafeswfsdgfawefsdgrafesdfsdafewfsdewaf
+    build:
+      context: ../../../docker
+      dockerfile: Dockerfile
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+
+
+  db:
+    image: 'postgres:16.3'
+    container_name: db
+    environment:
+      - POSTGRES_DB=cookbook
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
