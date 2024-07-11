@@ -21,12 +21,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class IngredientService {
-    private final RecipeRepository recipeRepository;
     private final IngredientRepository ingredientRepository;
-    private final FormulaRepository formulaRepository;
     private final IngredientMapper ingredientMapper;
-    private final FormulaMapper formulaMapper;
-    private final RecipeMapper recipeMapper;
 
     public List<IngredientDTO> findAll(){
         return ingredientMapper.toIngredientDTOs(ingredientRepository.findAll());
