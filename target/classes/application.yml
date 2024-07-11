@@ -4,21 +4,25 @@ spring:
   application:
     name: Cookbook
 
-  security:
-    user:
-      name: testUser
-      password: testApi
+  sql:
+    init:
+      mode: always
 
   jpa:
+    show-sql: true
+    defer-datasource-initialization: true
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
         jdbc:
           lob:
             non_contextual_creation: true
 
+
+
     hibernate:
       ddl-auto: create-drop
-      show-sql: true
 
   datasource:
     driverClassName: org.postgresql.Driver
@@ -28,7 +32,7 @@ spring:
 
 Cookbook:
   app:
-    jwtSecret: ======================BezKoder=Spring===========================
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMs: 86400000
 
 server:

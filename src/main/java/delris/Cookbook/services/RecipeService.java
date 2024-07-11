@@ -11,6 +11,7 @@ import delris.Cookbook.repositories.RecipeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -23,16 +24,36 @@ public class RecipeService {
     public List<RecipeDTO> findAll(){
        return recipeMapper.toRecipeDTOs(recipeRepository.findAll());
     }
+
     public RecipeDTO findById(Long id){
-        if(recipeRepository.findById(id).isPresent()) {
-            return recipeMapper.toRecipeDTO(recipeRepository.findById(id).get());
+        Optional<Recipe> recipe = recipeRepository.findById(id);
+        if(recipe.isPresent()) {
+            return recipeMapper.toRecipeDTO(recipe.get());
         }else{
             return new RecipeDTO();
         }
     }
+
+    public RecipeDTO findByName(String name){
+        Optional<Recipe> recipe = recipeRepository.findByName(name);
+        if (recipe.isPresent()){
+            return recipeMapper.toRecipeDTO(recipe.get());
+        }
+        return new RecipeDTO();
+    }
+    public List<RecipeDTO> find50MostRecentEntries(){
+        Optional<List<Recipe>> recipeList = recipeRepository.find50MostRecentEntries();
+        if(recipeList.isPresent()){
+            return recipeMapper.toRecipeDTOs(recipeList.get());
+        }else{
+            return List.of();
+        }
+    }
+
     public List<RecipeDTO> findAllByUser(){
         return List.of();
     }
+
     public RecipeDTO createRecipe(RecipeDTO recipeDTO){
         Recipe recipe = recipeMapper.toRecipe(recipeDTO);
         Recipe createdRecipe = recipeRepository.save(recipe);

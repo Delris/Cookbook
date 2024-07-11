@@ -2,6 +2,7 @@ package delris.Cookbook.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import delris.Cookbook.entities.Recipe;
+import delris.Cookbook.entities.RecipeStep;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,5 @@ public class FormulaDTO {
     @JsonProperty("recipe")
     private Recipe recipe;
     @JsonProperty("recipeSteps")
-    private List<String> recipeSteps;
+    private List<RecipeStep> recipeSteps;
 }

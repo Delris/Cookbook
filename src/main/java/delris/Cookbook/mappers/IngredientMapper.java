@@ -7,7 +7,7 @@ import delris.Cookbook.entities.Recipe;
 import org.mapstruct.Mapper;
 
 import java.util.List;
-@Mapper(componentModel = "spring")
+
 public interface IngredientMapper {
     Ingredient toIngredient(IngredientDTO ingredientDTO);
     IngredientDTO toIngredientDTO(Ingredient ingredient);

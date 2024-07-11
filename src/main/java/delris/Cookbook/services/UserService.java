@@ -1,9 +1,8 @@
 package delris.Cookbook.services;
 
-import delris.Cookbook.dto.UserGetDTO;
-import delris.Cookbook.dto.UserPostDTO;
-import delris.Cookbook.entities.User;
+import delris.Cookbook.dto.UserDTO;
 import delris.Cookbook.mappers.UserMapper;
+import delris.Cookbook.mappers.UserMapperImpl;
 import delris.Cookbook.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,25 +14,35 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserMapperImpl userMapper;
 
 
-    public List<UserGetDTO> findAll() {
-        return userMapper.toUsersGetDTOList(userRepository.findAll());
+    public List<UserDTO> findAll() {
+        return userMapper.toUsersDTOList(userRepository.findAll());
     }
 
-    public UserGetDTO findById(Long id) {
-        if (userRepository.findById(id).isPresent()) {
-            return userMapper.toUserGetDTO(userRepository.findById(id).get());
-        } else {
-            return new UserGetDTO();
+    public UserDTO findByEmail(String email) {
+        if(userRepository.findByEmail(email).isPresent()){
+            return userMapper.toUserDTO(userRepository.findByEmail(email).get());
+        }else {
+            return new UserDTO();
         }
     }
 
-    public UserPostDTO createUser(UserPostDTO userPostDTO) {
-        User user = userMapper.toUser(userPostDTO);
-        User createdUser = userRepository.save(user);
-        return userMapper.toUserPostDTO(createdUser);
-
+    public UserDTO findByUsername(String username){
+        if(userRepository.findByUsername(username).isPresent()){
+            return userMapper.toUserDTO(userRepository.findByUsername(username).get());
+        }else{
+            return new UserDTO();
+        }
     }
+
+    public UserDTO findById(Long id) {
+        if (userRepository.findById(id).isPresent()) {
+            return userMapper.toUserDTO(userRepository.findById(id).get());
+        } else {
+            return new UserDTO();
+        }
+    }
+
 }

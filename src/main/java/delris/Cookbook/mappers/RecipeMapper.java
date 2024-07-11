@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+
 public interface RecipeMapper {
     Recipe toRecipe(RecipeDTO recipeDTO);
     RecipeDTO toRecipeDTO(Recipe recipe);

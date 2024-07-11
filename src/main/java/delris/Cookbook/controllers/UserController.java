@@ -1,7 +1,7 @@
 package delris.Cookbook.controllers;
 
-import delris.Cookbook.dto.UserGetDTO;
-import delris.Cookbook.dto.UserPostDTO;
+import delris.Cookbook.dto.UserDTO;
+import delris.Cookbook.security.AccessConstants;
 import delris.Cookbook.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -20,17 +21,21 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PreAuthorize(AccessConstants.permitAdmin)
+    @GetMapping("/users")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
+    }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize(AccessConstants.permitAdminAndModerator)
+    @GetMapping("/user/{email}")
+    public ResponseEntity<UserDTO> getUser(@PathVariable String email) {
+        return ResponseEntity.ok(userService.findByEmail(email));
+    }
+    @PreAuthorize(AccessConstants.permitAdmin)
     @GetMapping("/user/{id}")
-    public ResponseEntity<UserGetDTO> getUser(@PathVariable long id){
+    public ResponseEntity<UserDTO> getUser(@PathVariable long id){
         return ResponseEntity.ok(userService.findById(id));
     }
 
-
-    @PostMapping("/user")
-    public ResponseEntity<UserPostDTO> createUser(@RequestBody UserPostDTO userPostDTO){
-        UserPostDTO createdUserPostDTO = userService.createUser(userPostDTO);
-        return ResponseEntity.created(URI.create("/api/user/" + createdUserPostDTO.getUserId())).body(createdUserPostDTO);
-    }
 }
