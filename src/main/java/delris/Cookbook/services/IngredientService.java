@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,8 +32,9 @@ public class IngredientService {
         return ingredientMapper.toIngredientDTOs(ingredientRepository.findAll());
     }
     public IngredientDTO findById(Long id){
-        if(ingredientRepository.findById(id).isPresent()) {
-            return ingredientMapper.toIngredientDTO(ingredientRepository.findById(id).get());
+        Optional<Ingredient> ingredient = ingredientRepository.findById(id);
+        if(ingredient.isPresent()) {
+            return ingredientMapper.toIngredientDTO(ingredient.get());
         }else{
             return new IngredientDTO();
         }
